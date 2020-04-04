@@ -1,0 +1,26 @@
+.Project__item {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  li {
+    padding: .5em;
+    display: inherit;
+    list-style: none;
+    transition: all .3s;
+    &:hover {
+      background: #eeeefd;
+      border-radius: 5px;
+    }
+  }
+  a {
+    margin: 0 .5em;
+    color: #000;
+    text-decoration: none;
+  }
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}

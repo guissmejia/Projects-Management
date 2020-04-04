@@ -1,0 +1,28 @@
+.Projects {
+  h3 {
+    text-align: center;
+  }
+  &__container {
+    width: 85%;
+    margin: auto;
+    background: #fff;
+    border-radius: .5em;
+  }
+  &__filter {
+    padding: 1em 1em 0;
+    display: flex;
+    input {
+      margin-right: .5em;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  &__items {
+    padding: 1em;
+    h4 {
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+}

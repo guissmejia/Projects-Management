@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/Header'
+import App from './routes/App'
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<Header/>, container);
+ReactDOM.render(<App/>, container);

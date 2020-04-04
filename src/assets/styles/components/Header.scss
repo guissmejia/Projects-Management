@@ -1,0 +1,46 @@
+.Header {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  justify-content: center;
+  &__logo {
+    display: flex;
+    figure {
+      margin: 0;
+    }
+    img {
+      width: 20%;
+      position: relative;
+    }
+    h1 {
+      position: absolute;
+      left: 7%;
+      font-weight: 500;
+    }
+  }
+  &__user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    figure {
+      margin: 0 .5em;
+      background: #f9f9f9;
+      border-radius: 50%;
+      width: 10%;
+      height: 65%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img {
+      width: 75%;
+    }
+    h2 {
+      color: gray;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+}
