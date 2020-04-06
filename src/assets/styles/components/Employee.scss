@@ -1,0 +1,22 @@
+.List__employees {
+  margin: 1em 0;
+  padding: .5em;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 10% 15% 20% 20% 17% 17%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: .5em;
+  &--picture {
+    width: 45%;
+    margin: auto;
+  }
+  h3, p {
+    margin: .5em;
+  }
+  &--icon {
+    width: 15%;
+    margin: 0 .2em;
+  }
+}
