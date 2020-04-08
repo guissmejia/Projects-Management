@@ -1,0 +1,53 @@
+@media screen and(max-width: 768px) {
+  h3, button {
+    font-size: 16px !important;
+  }
+
+  h4, p {
+    font-size: 14px;
+  }
+
+  .Header__logo {
+    h1 {
+      font-size: 24px;
+    }
+    img {
+      width: 25%;
+    }
+  }
+
+  .Main__container {
+    display: block;
+    .Projects__container {
+      max-width: 70%;
+    }
+    .Projects__filter {
+      padding: 1em 0;
+      justify-content: center;
+    }
+    .Projects__items {
+      padding-top: 0;
+      h4 {
+        text-align: center;
+        margin-bottom: .5em;
+      }
+    }
+    .Employee__table {
+      margin: 1em auto;
+      .Add--employee {
+        button {
+          width: 20%;
+        }
+      }
+    } 
+    .List__employees{
+      grid-template-columns: 5% 15% 25% 20% 17% 17%;
+      &--picture {
+        width: 60%;
+      }
+      &--icon {
+        width: 20%;
+      }
+    }
+  }
+}
