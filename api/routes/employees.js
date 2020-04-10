@@ -1,32 +1,53 @@
 const express = require('express');
-const { employeesMock } = require('../utils/mocks/employees');
+const EmployeesService = require('../services/employees');
 
-function employeesApi(app){
+function employeesApi(app) {
   const router = express.Router();
   app.use('/api/employees', router);
-  
+
+  const employeesService = new EmployeesService();
+
   //1 GET
-  router.get('/:employeeId', async function(req, res, next){
+  router.get('/', async function (req, res, next) {
+    const { tags } = req.query;
     try {
-      const employees = await Promise.resolve(employeesMock[0]);
+      const employees = await employeesService.getEmployees({ tags });
+
+      res.status(200).json({
+        data: employees,
+        message: 'Employees listed',
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  //1 GET id
+  router.get('/:employeeId', async function (req, res, next) {
+    const { employeeId } = req.params;
+    try {
+      const employees = await employeesService.getEmployee({ employeeId });
 
       res.status(200).json({
         data: employees,
         message: 'Employee retrieved',
       });
-    } catch(err){
-      next(err)
+    } catch (err) {
+      next(err);
     }
-  })
+  });
 
   //2 POST
   router.post('/', async function (req, res, next) {
+    const { body: employee } = req;
     try {
-      const createEmployeeId = await Promise.resolve(employeesMock[0].id);
+      const createEmployeeId = await employeesService.createEmployee({
+        employee,
+      });
 
       res.status(201).json({
         data: createEmployeeId,
-        message: 'Employees created',
+        message: 'Employee created',
       });
     } catch (err) {
       next(err);
@@ -35,12 +56,38 @@ function employeesApi(app){
 
   //3 PUT
   router.put('/:employeeId', async function (req, res, next) {
+    const { body: employee } = req;
+    const { employeeId } = req.params;
     try {
-      const updatedEmployeeId = await Promise.resolve(employeesMock[0].id);
+      const updatedEmployeeId = await employeesService.updateEmployee({
+        employeeId,
+        employee,
+      });
 
       res.status(200).json({
         data: updatedEmployeeId,
-        message: 'Employees updated',
+        message: 'Employee updated',
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  //3.1 PATCH
+  router.patch('/:employeeId', async function (req, res, next) {
+    const { body: employee } = req;
+    const { employeeId } = req.params;
+    try {
+      const updatedPartialDataEmployeeId = await employeesService.updatePartialDataEmployee(
+        {
+          employeeId,
+          employee,
+        }
+      );
+
+      res.status(200).json({
+        data: updatedPartialDataEmployeeId,
+        message: 'Employee updated partial data',
       });
     } catch (err) {
       next(err);
@@ -49,8 +96,11 @@ function employeesApi(app){
 
   //4 DELETE
   router.delete('/:employeeId', async function (req, res, next) {
+    const { employeeId } = req.params;
     try {
-      const deletedEmployeeId = await Promise.resolve(employeesMock[0].id);
+      const deletedEmployeeId = await employeesService.deleteEmployee({
+        employeeId,
+      });
 
       res.status(200).json({
         data: deletedEmployeeId,
@@ -60,7 +110,6 @@ function employeesApi(app){
       next(err);
     }
   });
-  
-};
+}
 
-module.exports = employeesApi
+module.exports = employeesApi;
