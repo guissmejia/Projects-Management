@@ -1,7 +1,7 @@
 const express = require('express');
 const EmployeesService = require('../services/employees');
 
-function employeesApi(app) {
+function employeesAPI(app) {
   const router = express.Router();
   app.use('/api/employees', router);
 
@@ -9,9 +9,9 @@ function employeesApi(app) {
 
   //1 GET
   router.get('/', async function (req, res, next) {
-    const { tags } = req.query;
+    const { project } = req.query;
     try {
-      const employees = await employeesService.getEmployees({ tags });
+      const employees = await employeesService.getEmployees({ project });
 
       res.status(200).json({
         data: employees,
@@ -73,27 +73,6 @@ function employeesApi(app) {
     }
   });
 
-  //3.1 PATCH
-  router.patch('/:employeeId', async function (req, res, next) {
-    const { body: employee } = req;
-    const { employeeId } = req.params;
-    try {
-      const updatedPartialDataEmployeeId = await employeesService.updatePartialDataEmployee(
-        {
-          employeeId,
-          employee,
-        }
-      );
-
-      res.status(200).json({
-        data: updatedPartialDataEmployeeId,
-        message: 'Employee updated partial data',
-      });
-    } catch (err) {
-      next(err);
-    }
-  });
-
   //4 DELETE
   router.delete('/:employeeId', async function (req, res, next) {
     const { employeeId } = req.params;
@@ -112,4 +91,4 @@ function employeesApi(app) {
   });
 }
 
-module.exports = employeesApi;
+module.exports = employeesAPI;

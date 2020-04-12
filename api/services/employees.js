@@ -1,33 +1,34 @@
-const { employeesMock } = require('../utils/mocks/employees');
+const MongoLib = require('../lib/mongo');
 
 class EmployeesService {
-  async getEmployees() {
-    const employees = await Promise.resolve(employeesMock);
+  constructor() {
+    this.collection = 'empleados';
+    this.mongoDB = new MongoLib();
+  }
+  
+  async getEmployees({ project }) {
+    const query = project && { project: { $in: project }};
+    const employees = await this.mongoDB.getAll(this.collection, query);
     return employees || [];
   }
 
-  async getEmployee() {
-    const employee = await Promise.resolve(employeesMock[0]);
+  async getEmployee({ employeeId }) {
+    const employee = await this.mongoDB.get(this.collection, employeeId)
     return employee || {};
   }
 
-  async createEmployee() {
-    const createEmployeeId = await Promise.resolve(employeesMock[0].id);
+  async createEmployee({ employee }) {
+    const createEmployeeId = await this.mongoDB.create(this.collection, employee);
     return createEmployeeId;
   }
 
-  async updateEmployee() {
-    const updatedEmployeeId = await Promise.resolve(employeesMock[0].id);
+  async updateEmployee({ employeeId, employee } = {}) {
+    const updatedEmployeeId = await this.mongoDB.update(this.collection, employeeId, employee);
     return updatedEmployeeId;
   }
 
-  async updatePartialDataEmployee() {
-    const updatedPartialDataEmployeeId = await Promise.resolve(employeesMock[0].id);
-    return updatedPartialDataEmployeeId;
-  }
-
-  async deleteEmployee() {
-    const deletedEmployeeId = await Promise.resolve(employeesMock[0].id);
+  async deleteEmployee({ employeeId }) {
+    const deletedEmployeeId = await this.mongoDB.delete(this.collection, employeeId)
     return deletedEmployeeId;
   }
 }

@@ -2,13 +2,12 @@ const express = require('express');
 const app = express();
 const { config } = require('./config/index');
 
-const employeesAPi = require('./routes/employees');
+const employeesAPI = require('./routes/employees');
 
-employeesAPi(app);
+//body parser
+app.use(express.json());
 
-app.get('/', function(req, res) {
-  res.send('Hello World')
-});
+employeesAPI(app);
 
 app.listen(config.port, function(){
   console.log(`listening http://localhost:${config.port}`);
