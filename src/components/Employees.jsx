@@ -1,15 +1,22 @@
-import React from "react";
-import Employee from './Employee'
-import EmployeesItems from '../data/employeesData'
-import '../assets/styles/components/Employees.scss'
+import React from 'react';
+import Employee from './Employee';
+import EmployeesItems from '../data/employeesData';
+import AddEmployeeModal from './AddEmployeeModal';
+import '../assets/styles/components/Employees.scss';
 
-const Employees = () => {
+const Employees = (props) => {
   return (
     <section className="Employee__table">
       <div className="Employee__table--options">
-        <div className="Add--employee">
-          <button type="submit">Agregar</button>
-        </div>
+        <form className="Add--employee">
+          <button onClick={props.onOpenModal}  className="Add--employee-button" type="submit">
+            Agregar
+          </button>
+          <AddEmployeeModal
+            isOpen={props.modalIsOpen} 
+            onClose={props.onCloseModal}  
+          />
+        </form>
         <div className="Employees--options">
           <input type="checkbox" />
           <h4>Foto</h4>
@@ -19,20 +26,31 @@ const Employees = () => {
           <h4>Acciones</h4>
         </div>
       </div>
-      {EmployeesItems.map(({ id, imgSrc, name, lastname, jobTitle, salary, availability, status }) => {
-        return (
-          <Employee
-            key={id}
-            imgSrc={imgSrc}
-            name={name}
-            lastname={lastname}
-            jobTitle={jobTitle}
-            salary={salary}
-            availability={availability}
-            status={status}
-          />
-        );
-      })}
+      {EmployeesItems.map(
+        ({
+          id,
+          imgSrc,
+          name,
+          lastname,
+          jobTitle,
+          salary,
+          availability,
+          status,
+        }) => {
+          return (
+            <Employee
+              key={id}
+              imgSrc={imgSrc}
+              name={name}
+              lastname={lastname}
+              jobTitle={jobTitle}
+              salary={salary}
+              availability={availability}
+              status={status}
+            />
+          );
+        }
+      )}
     </section>
   );
 };

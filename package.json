@@ -6,12 +6,13 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "dev": "DEBUG=app:* nodemon api/index",
-    "startBackend": "NODE_ENV=production node index"
+    "dev": "DEBUG=app:* nodemon server/index",
+    "start:dev": "NODE_ENV=production node index"
   },
   "author": "Guiselle Mejía <guissmejia@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "babel-eslint": "^10.1.0",
     "dotenv": "^8.2.0",
     "eslint-config-airbnb": "^18.1.0",

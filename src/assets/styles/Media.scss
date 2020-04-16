@@ -1,3 +1,11 @@
+@media screen and(max-width: 1024px) {
+  .Modal__container {
+    .Modal__button--save{
+      width: 25%;
+    }
+  }
+}
+
 @media screen and(max-width: 768px) {
   h3, button {
     font-size: 16px !important;
