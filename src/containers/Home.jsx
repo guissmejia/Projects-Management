@@ -1,30 +1,41 @@
 import React from 'react'
-import Projects from '../components/Projects'
-import Employees from '../components/Employees'
+import Projects from './Projects'
+import Employees from './Employees'
 import '../assets/styles/containers/Home.scss'
 
 class Home extends React.Component {
-  state = {
-    modalIsOpen: false,
+  constructor() {
+    super();
+    this.state = {
+      // modalIsOpen: false,
+      name: '',
+      lastname: '',
+      jobTitle: '',
+      salary: '',
+      availavility: '',
+      status: '',
+      project: '',
+    };
   }
 
+//Estado del modal
   handleOpenModal = (e) => {
     this.setState({ modalIsOpen: true });
-    e.preventDefault();    
-  }
+    e.preventDefault();
+  };
 
   handleCloseModal = (e) => {
     this.setState({ modalIsOpen: false });
     e.preventDefault();
+  };
+
+ // Captura los inputs del formulario 
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
   }
-
-  // handleEditEmployee = async e => {
-
-  // }
-
-  // handleDeleteEmployee = async e => {
-
-  // }
 
   render() {
     return (
@@ -37,6 +48,8 @@ class Home extends React.Component {
             modalIsOpen={this.state.modalIsOpen}
             onEditEmployee={this.handleEditEmployee}
             onDeleteEmployee={this.handleDeleteEmployee}
+            onAddEmployee={this.handleCreateEmployee}
+            onHandleChangeAdd={this.handleChange}
           />
         </main>
       </>

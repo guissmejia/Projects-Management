@@ -1,7 +1,7 @@
 import React from 'react';
-import Employee from './Employee';
+import Employee from '../components/Employee';
 import EmployeesItems from '../data/employeesData';
-import AddEmployeeModal from './AddEmployeeModal';
+import AddEmployeeModal from '../components/AddEmployeeModal';
 import '../assets/styles/components/Employees.scss';
 
 const Employees = (props) => {
@@ -15,6 +15,8 @@ const Employees = (props) => {
           <AddEmployeeModal
             isOpen={props.modalIsOpen} 
             onClose={props.onCloseModal}  
+            addEmployee={props.onAddEmployee}
+            onHandleChange={props.onHandleChangeAdd}
           />
         </form>
         <div className="Employees--options">
