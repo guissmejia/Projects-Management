@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header/> Header Snapshot 1`] = `
+<header
+  className="Header"
+>
+  <div
+    className="Header__logo"
+  >
+    <figure>
+      <img
+        alt="Projects Management Logo"
+        src="test-file-stub"
+      />
+    </figure>
+    <h1>
+      Projects Management
+    </h1>
+  </div>
+  <div
+    className="Header__user"
+  >
+    <figure>
+      <img
+        alt="Header User"
+        src="test-file-stub"
+      />
+    </figure>
+    <h2>
+      Guiselle Mejía
+    </h2>
+  </div>
+</header>
+`;

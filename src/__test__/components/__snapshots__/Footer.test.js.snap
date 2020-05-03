@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer/> Footer Snapshot 1`] = `
+<footer
+  className="Footer"
+>
+  <p>
+    Made for Guiselle Mejía 2020
+  </p>
+</footer>
+`;
