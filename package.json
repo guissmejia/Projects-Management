@@ -4,10 +4,9 @@
   "description": "Este es el proyecto para Platzi Master",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack-cli --config webpack.config.js",
     "start": "webpack-dev-server --open --mode development",
-    "dev": "DEBUG=app:* nodemon server/index",
-    "start:dev": "NODE_ENV=production node index"
+    "start:dev": "DEBUG=app:* nodemon server/index"
   },
   "author": "Guiselle Mejía <guissmejia@gmail.com>",
   "license": "MIT",
@@ -20,6 +19,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "express": "^4.17.1",
+    "helmet": "^3.22.0",
     "mongodb": "^3.5.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -43,10 +43,13 @@
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
+    "react-hot-loader": "^4.12.21",
     "sass-loader": "^8.0.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "husky": {
     "hooks": {
