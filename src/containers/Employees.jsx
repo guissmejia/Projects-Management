@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Employee from '../components/Employee';
-import EmployeesItems from '../data/employeesData';
 import AddEmployeeModal from '../components/AddEmployeeModal';
 import '../assets/styles/components/Employees.scss';
+import useEmployeesState from '../hooks/useEmployeesState';
+
+const API = 'https://projects-management-api.vercel.app/api/employees';
 
 const Employees = (props) => {
+
+const employeesState = useEmployeesState(API);
+
   return (
     <section className="Employee__table">
       <div className="Employee__table--options">
         <form className="Add--employee">
-          <button onClick={props.onOpenModal}  className="Add--employee-button" type="submit">
+          <button
+            onClick={props.onOpenModal}
+            className="Add--employee-button"
+            type="submit"
+          >
             Agregar
           </button>
           <AddEmployeeModal
-            isOpen={props.modalIsOpen} 
-            onClose={props.onCloseModal}  
+            isOpen={props.modalIsOpen}
+            onClose={props.onCloseModal}
             addEmployee={props.onAddEmployee}
             onHandleChange={props.onHandleChangeAdd}
           />
@@ -28,31 +37,10 @@ const Employees = (props) => {
           <h4>Acciones</h4>
         </div>
       </div>
-      {EmployeesItems.map(
-        ({
-          id,
-          imgSrc,
-          name,
-          lastname,
-          jobTitle,
-          salary,
-          availability,
-          status,
-        }) => {
-          return (
-            <Employee
-              key={id}
-              imgSrc={imgSrc}
-              name={name}
-              lastname={lastname}
-              jobTitle={jobTitle}
-              salary={salary}
-              availability={availability}
-              status={status}
-            />
-          );
-        }
-      )}
+      {employeesState &&
+        employeesState.map((item) => {
+         return <Employee key={item._id} {...item} />;
+        })}
     </section>
   );
 };

@@ -15,11 +15,23 @@
   h3, p {
     margin: .5em;
   }
-  &--icon {
-    width: 15%;
-    margin: 0 .2em;
-  }
   &:hover{
     background: #eeeefd;
+  }
+  &--actions {
+    .List__employees--edit, .List__employees--delete {
+      background: none;
+      border: none;
+      outline: 0;
+      svg {
+        font-size: 2em;
+        cursor: pointer;
+        color: #da4a74;
+        transition: all .5s;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
   }
 }

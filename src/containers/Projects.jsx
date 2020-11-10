@@ -1,9 +1,14 @@
 import React from "react";
 import Project from '../components/Project'
-import ProjectsData from '../data/projectsData'
+import useProjectsState from '../hooks/useProjectsState'
 import "../assets/styles/components/Projects.scss"
 
+const API = 'https://projects-management-api.vercel.app/api/projects';
+
 const Projects = () => {
+
+  const projectsState = useProjectsState(API);
+
   return (
     <section className="Projects">
       <h3>Lista de empleados</h3>
@@ -14,13 +19,11 @@ const Projects = () => {
         </div>
        <div className="Projects__items">
         <h4>Proyecto</h4>
-         {ProjectsData.map(({ id, name, category, imgSrc}) => {
+         {projectsState.map((item) => {
            return(
           <Project
-            key={id}
-            name={name}
-            category={category}
-            imgSrc={imgSrc}
+            key={item._id}
+            {...item}
           />
            );
          })}

@@ -1,11 +1,14 @@
 import React from "react";
+import PropTypes from 'prop-types'
 // import EditEmployeeModal from './EditEmployeeModal';
 // import DeleteEmployeeModal from './DeleteEmployeeModal';
-// import editIcon from "../assets/static/edit.png";
-// import deleteIcon from "../assets/static/delete.png";
 import '../assets/styles/components/Employee.scss';
+import { MdDelete } from "react-icons/md";
+import { MdModeEdit } from "react-icons/md";
+
 
 const Employee = ({ imgSrc, name, lastname, jobTitle, salary, availability, status }, props) => {
+  
   return (
     <div className="List__employees">
       <input type="checkbox" />
@@ -21,30 +24,34 @@ const Employee = ({ imgSrc, name, lastname, jobTitle, salary, availability, stat
         <p>{availability}</p>
       </div>
       <p>{status}</p>
-      <div className="List__employess--actions">
+      <div className="List__employees--actions">
         <button
-          className=""
+          className="List__employees--edit"
           type="submit"
           onClick={props.onOpenModal}
         >
-          Edit
+          <MdModeEdit/>
         </button>
         <button
-          className=""
+          className="List__employees--delete"
           type="submit"
           onClick={props.onOpenModal}
-        >
-          Delete
+          >
+          <MdDelete/>
         </button>
-        {/* <img className="List__employees--icon" src={editIcon} alt="Edit User" />
-        <img
-          className="List__employees--icon"
-          src={deleteIcon}
-          alt="Delete User"
-        /> */}
       </div>
     </div>
   );
 };
+
+Employee.propTypes = {
+  imgSrc: PropTypes.string,
+  name: PropTypes.string,
+  lastname: PropTypes.string,
+  jobTitle: PropTypes.string,
+  salary: PropTypes.string,
+  availability: PropTypes.string,
+  status: PropTypes.string
+}
 
 export default Employee;

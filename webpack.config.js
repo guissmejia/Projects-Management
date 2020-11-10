@@ -60,4 +60,7 @@ module.exports = {
       filename: 'assets/[name].css',
     })
   ],
+  node: {
+    fs: 'empty',
+  }
 };
