@@ -6,16 +6,16 @@ const DeleteEmployeeModal= (props) => {
     <Modal isOpen={props.isOpen} onClose={props.onClose}>
       <div className="DeleteBadgeModal">
         <h1>Estás seguro?</h1>
-        <p>Estas a punto de eliminar este usuario.</p>
+        <p>Estas a punto de eliminar este usuario</p>
         <div>
           <button
-            onClick={props.onDeleteEmployee}
+            onClick={props.deleteEmployee}
             className="Modal__button--save"
           >
-            Delete
+            Eliminar
           </button>
           <button onClick={props.onClose} className="Modal__button--save">
-            Cancel
+            Cancelar
           </button>
         </div>
       </div>

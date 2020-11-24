@@ -1,7 +1,7 @@
 import React from "react";
 import Project from '../components/Project'
 import useProjectsState from '../hooks/useProjectsState'
-import "../assets/styles/components/Projects.scss"
+import "../assets/styles/containers/Projects.scss";
 
 const API = 'https://projects-management-api.vercel.app/api/projects';
 

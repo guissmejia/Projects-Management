@@ -7,48 +7,49 @@ const AddEmployeeModal = (props) => {
       <div>
         <h3>Agregar Empleado</h3>
         <form onSubmit={props.addEmployee} className="Modal__content">
-          <input
-            type="text"
-            name="name"
-            onChange={props.onHandleChange}
-            placeholder="Nombre:"
-          />
-          <input
-            type="text"
-            name="lastname"
-            onChange={props.onHandleChange}
-            placeholder="Apellido:"
-          />
-          <input
-            type="text"
-            name="jobTitle"
-            onChange={props.onHandleChange}
-            placeholder="Cargo:"
-          />
-          <input
-            type="number"
-            name="salary"
-            onChange={props.onHandleChange}
-            placeholder="Salario:"
-          />
-          <input
-            type="text"
-            name="availavility"
-            onChange={props.onHandleChange}
-            placeholder="Disponibilidad: Ej: Full Time, Half Time"
-          />
-          <input
-            type="text"
-            name="status"
-            onChange={props.onHandleChange}
-            placeholder="Estado: Ej: Activo, Inactivo"
-          />
-          <input
-            type="text"
-            name="project"
-            onChange={props.onHandleChange}
-            placeholder="Proyecto:"
-          />
+          <label>
+            Nombres
+            <input type="text" name="name" onChange={props.onHandleChange} required/>
+          </label>
+          <label>
+            Apellidos
+            <input
+              type="text"
+              name="lastname"
+              onChange={props.onHandleChange}
+            />
+          </label>
+          <label>
+            Cargo
+            <input
+              type="text"
+              name="jobTitle" 
+              onChange={props.onHandleChange} required
+            />
+          </label>
+          <label>
+            {' '}
+            Salario
+            <input type="text" name="salary" onChange={props.onHandleChange} required/>
+          </label>
+          <label>
+            {' '}
+            Disponibilidad
+            <select name="availavility" onChange={props.onHandleChange} required>
+              <option value="">Seleccionar</option>
+              <option value="Full Time">Full Time</option>
+              <option value="Half Time">Half Time</option>
+            </select>
+          </label>
+          <label>
+            {' '}
+            Estado
+            <select name="status" onChange={props.onHandleChange} required>
+              <option value="">Seleccionar</option>
+              <option value="Active">Activo</option>
+              <option value="Inactive">Inactivo</option>
+            </select>
+          </label>
           <button className="Modal__button--save" type="submit">
             Guardar
           </button>

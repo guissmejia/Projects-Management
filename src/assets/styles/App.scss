@@ -14,3 +14,7 @@ h1, h2, h3, h4, a, label {
 p, input {
   font-family: $paragraph-font;
 }
+
+input, button, textarea, select {
+  outline: 0;
+}
